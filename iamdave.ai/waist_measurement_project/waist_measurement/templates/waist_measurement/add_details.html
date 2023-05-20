@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement List</title>
+<style>
+   body {
+          font-family: Arial, sans-serif;
+          background-image: url("https://th.bing.com/th/id/OIP.pmJTcN7itX68ckmubiVNpwAAAA?w=293&h=180&c=7&r=0&o=5&dpr=1.6&pid=1.7");
+          background-size: cover;
+          background-color: #000000d7;
+          margin: 0;
+          padding: 20px;
+        }
+    
+        h3 {
+          color: #ffffff;
+          text-align: center;
+		      margin: 0px;
+          padding:0px;
+        }
+
+        form {
+          max-width: 400px;
+          margin: 15px auto;
+          background-color: #b6b6b6ca;
+          padding: 30px;
+          border-top-left-radius: 60px;
+          border-bottom-right-radius: 60px;
+          box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.98);
+        }
+    
+        label {
+          display: block;
+          margin-top: 15px;
+          margin-bottom: 5px;
+          color: #0a0a0a;
+          font-weight: bold;
+        }
+    
+        input[type="tel"],
+        select {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #949494;
+          border-radius: 3px;
+          font-size: 16px;
+          box-sizing: border-box;
+        }
+    
+        input[type="submit"] {
+          background-color: #345035;
+          color: #ffffff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 3px;
+          cursor: pointer;
+          font-size: 16px;
+          margin: 15px 150px ;
+        }
+    
+        input[type="submit"]:hover {
+          background-color: #2b4a2c;
+          font-weight: 600;
+        }
+
+        .ToastMsg{
+          margin: auto;
+          max-width: 300px;
+          background-color: rgb(163, 201, 105);
+          text-align: center;
+          border-radius: 10px;
+        }
+        </style>
+</head>
+<body>
+
+  <h3>Apologize We Don't Have Related Data For Your Measurements.</h3><br>
+  <h3>Please Fill The Following Details And Help Us Improve.</h3>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="ToastMsg">
+          <h1{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h1>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+
+    <label for="height">Height (cm):</label>
+    <input type="tel" id="height" name="height" placeholder="Enter your height" required>
+    
+    <label for="weight">Weight (Kg):</label>
+    <input type="tel" id="weight" name="weight" placeholder="Enter your weight" required>
+    
+    <label for="age">Age:</label>
+    <input type="tel" id="age" name="age" placeholder="Enter your age" required>
+    
+     <label for="waistSelect">Waist Size (cm):</label>
+     <input type="tel" id="waist" name="waist" placeholder="Enter your waist size" required>
+      
+      <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
